@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Cell from './Cell.js'
 
 export default class Matrix extends Component {
   
   genRow = (vals) => (
-    vals.map(val => <div className="cell"></div>) // replace me and render a cell component instead!
+    vals.map(val => <Cell value={val} />)
   )
   
   genMatrix = () => (
@@ -19,3 +20,16 @@ export default class Matrix extends Component {
   }
   
 }
+//add matrix default props
+Matrix.defaultProps = {
+  values: (() => {
+    const defRow = ['#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00', '#F00']
+    return (new Array(10).fill(defRow))
+  })()
+}
+
+// {/* <Matrix />
+// ✓ uses a default 'values' prop of an array with 10 items
+// ✓ each sub-array of the default 'values' prop is an array
+// ✓ each sub-array of the default values prop is filled with 10 hex color string equal to: '#F00'
+//  */}
